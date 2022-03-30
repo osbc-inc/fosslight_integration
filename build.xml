@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="HubReport">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.5"/>
+    <property name="source" value="1.5"/>
+    <path id="Maven Dependencies.libraryclasspath">
+        <pathelement location="../../../../../Users/byung/.m2/repository/junit/junit/3.8.1/junit-3.8.1.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/commons-collections/commons-collections/3.2.2/commons-collections-3.2.2.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/commons-configuration/commons-configuration/1.10/commons-configuration-1.10.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/org/apache/commons/commons-lang3/3.5/commons-lang3-3.5.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/com/google/code/gson/gson/2.8.0/gson-2.8.0.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/org/apache/httpcomponents/httpclient/4.5.3/httpclient-4.5.3.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/org/apache/httpcomponents/httpcore/4.4.6/httpcore-4.4.6.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/net/sourceforge/jexcelapi/jxl/2.6.12/jxl-2.6.12.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/log4j/log4j/1.2.14/log4j-1.2.14.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/joda-time/joda-time/2.9.7/joda-time-2.9.7.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/org/apache/poi/poi/3.15/poi-3.15.jar"/>
+        <pathelement location="../../../../../Users/byung/.m2/repository/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar"/>
+    </path>
+    <path id="HubReport.classpath">
+        <pathelement location="target/classes"/>
+        <pathelement location="target/test-classes"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <path id="run.main.classpath">
+        <path refid="HubReport.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <mkdir dir="target/test-classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/test-classes">
+            <fileset dir="src/test/java">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src/main/resources">
+                <exclude name="**/*.java"/>
+                <exclude name="**"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+        <delete dir="target/test-classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/main/java"/>
+            <src path="src/main/resources"/>
+            <exclude name="**"/>
+            <classpath refid="HubReport.classpath"/>
+        </javac>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/test-classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src/test/java"/>
+            <classpath refid="HubReport.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="main">
+        <java classname="kr.co.blackducksoftware.HubReport.main" failonerror="true" fork="yes">
+            <classpath refid="run.main.classpath"/>
+        </java>
+    </target>
+</project>
