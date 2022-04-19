@@ -3,6 +3,7 @@
 
 *.xls
 *.xlsx
+build.xml
 
 ### Eclipse ###
 .metadata
