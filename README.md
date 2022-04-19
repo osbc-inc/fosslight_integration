@@ -21,7 +21,7 @@ FOSSLight Integration
 
 # 사용 방법
 
-### 실행 방법
+### 실행 방법(Terminal)
 - 파라미터는 config.properties 파일에 정의된 값 보다 우선 사용됩니다.
 ```bash
 $ java -jar class [args....]
@@ -30,7 +30,7 @@ e.g)
 $ java -jar fosslight_integration.jar --fidprotocol https --fidaddress fossid.osbc.co.kr --fidusername byunghoon --fidapikey fidapikey --fidprojectname projectName --fidscanname scanName --fltprotocol https --fltaddress fosslight.osbc.co.kr --flttoken flttoken
 ```
 
-### 파라미터
+#### 파라미터
 ```
 FossID Server Information
 --fidprotocol: FossID web interface protocol
@@ -68,3 +68,14 @@ FOSSLight Project/Scan Information
                   (default: fossidScanName)
 --fltostype: FOSSLight project OS type
              (defulat: Linux, Windows, MacOS, ETC)
+```
+
+### 실행 방법(IntelliJ)
+parameter를 입력하는 것 대신 config.properties 파일을 수정하여 추출이 필요한 내용을 작성할 수 있습니다. config.properties를 수정하면 5번부터 다시 진행합니다.
+1. 저장소를 Clone 한 뒤, [IntelliJ](https://www.jetbrains.com/idea/download) 에서 Open project로 프로젝트를 엽니다.
+2. `src/main/resources/config.properties` 파일에 내용을 채워넣습니다. 
+3. IntelliJ > File > Project Structure > Project Settings > Artifacts
+4. `+` 버튼 클릭 > Jar > From modules with dependencies > 폴더모양 아이콘 클릭 > Main Class 선택(`integration.main.main`) > OK
+5. IntelliJ > Build > Build Artifacts 를 클릭하면 out이라는 폴더에 JAR 파일이 생성됩니다.
+6. 생성된 JAR 파일에서 우클릭 > Run
+
