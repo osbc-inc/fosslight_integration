@@ -2,8 +2,8 @@ FOSSLight Integration
 ------------------------------------------------
 
 ### 도구 설명
-- 이 도구는 FossID의 검증 데이터를 엑셀로 출력하여 FOSSLight로 이관 시키기 위한 도구입니다.
-- FOSSLight: https://fosslight.org/
+- 이 도구는 FossID의 검증 데이터를 엑셀로 출력하여 FOSSLight Hub의 Project에 업로드하기 위한 도구입니다.
+- FOSSLight Hub : https://fosslight.org/fosslight/
 
 ### 실행 환경
 - 이 도구는 OpenJDK 1.8에서 테스트 되었습니다.
